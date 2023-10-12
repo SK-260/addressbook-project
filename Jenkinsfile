@@ -38,8 +38,7 @@ pipeline{
                 withEnv(["JAVA_HOME=${tool 'JDK 8'}"]) {
                     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
                     cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
-                }
-                
+                }                
             }
         }
         stage("Sonar Analysis") {
@@ -59,13 +58,13 @@ pipeline{
                     '''
                 }
             }
+        }    
         stage("Quality Gate") {
             steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
-          }
         }
         stage("Code Package"){
             steps {
