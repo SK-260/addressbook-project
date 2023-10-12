@@ -60,5 +60,10 @@ pipeline{
                 }
             }
         }
+        stage("Code Package"){
+            steps {
+                sh 'mvn package'
+            }
+        }
     }
 }
