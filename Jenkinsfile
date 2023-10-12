@@ -34,6 +34,7 @@ pipeline{
         stage("Code Coverage"){
             steps{
                 sh 'mvn cobertura:cobertura'
+                cobertura coberturaReportFile: '**/target/site/cobertura/index.html'
                 
                 
             }
