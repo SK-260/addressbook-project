@@ -33,8 +33,8 @@ pipeline{
         }
         stage("Code Coverage"){
             steps{
-                sh 'mvn cobertura:cobertura'
-                cobertura coberturaReportFile: '**/target/site/cobertura/index.html'
+                sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+                cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
                 
                 
             }
