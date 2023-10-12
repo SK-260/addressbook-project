@@ -12,7 +12,7 @@ pipeline{
         }
         stage("Code Compile"){
             steps{
-                sh ' mvn compile'
+                sh 'mvn compile'
             }
         }
         stage("Code Review") {
@@ -20,6 +20,16 @@ pipeline{
                 sh ' mvn pmd:pmd'
             }
             
+        }
+        stage("Unit Testing"){
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage("Code Coverage"){
+            steps{
+                sh "mvn cobertura:cobertura"
+            }
         }
     }
 }
