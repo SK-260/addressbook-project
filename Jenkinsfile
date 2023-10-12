@@ -35,9 +35,10 @@ pipeline{
         }
         stage("Code Coverage"){
             steps{
-                sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
-                cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
-                
+                withEnv(["JAVA_HOME=${tool 'JDK8'}"]) {
+                    sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+                    cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
+                }
                 
             }
         }
