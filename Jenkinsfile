@@ -23,12 +23,14 @@ pipeline{
         stage("Code Review") {
             steps {
                 sh ' mvn pmd:pmd'
+                recordIssues(tools: [pmdParser(pattern: '/target/pmd.xml')])
             }
             
         }
         stage("Unit Testing"){
             steps {
                 sh "mvn test"
+                junit '/target/surefire-reports/*.xml'
             }
         }
         stage("Code Coverage"){
