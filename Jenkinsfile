@@ -51,6 +51,8 @@ pipeline{
                     sh ''' ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=addressbook \
                     -Dsonar.projectName=addressbook \
                     -Dsonar.projectVersion=1.0 \
+                    -Dsonar.source=src/ \
+                    -Dsonar.java.binaries=target/classes/,target/test-classes/ \
                     -Dsonar.java.pmd.reportPaths=target/ \
                     '''
                 }
