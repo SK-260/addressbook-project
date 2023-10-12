@@ -42,8 +42,10 @@ pipeline{
             }
         }
         stage("Sonar Analysis") {
-            withSonarQubeEnv(credentialsId: 'sonartoken', installationName: 'sonarserver'){
-                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonartoken', installationName: 'sonarserver'){
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                }
             }
         }
     }
