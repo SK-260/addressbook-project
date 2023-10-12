@@ -5,6 +5,11 @@ pipeline{
         maven "MAVEN3"
     }
     stages{
+        stage ("Clear workspace"){
+            steps {
+                deleteDir()
+            }
+        }
         stage("clone repo"){
             steps{
                 git branch: 'main', credentialsId: 'githublogin', url: 'git@github.com:SK-260/addressbook-project.git'
@@ -29,6 +34,7 @@ pipeline{
         stage("Code Coverage"){
             steps{
                 sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+                
             }
         }
     }
