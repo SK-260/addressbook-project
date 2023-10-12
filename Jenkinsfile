@@ -23,7 +23,7 @@ pipeline{
         stage("Code Review") {
             steps {
                 sh ' mvn pmd:pmd'
-                recordIssues(tools: [pmdParser(pattern: '/target/pmd.xml')])
+                recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
             }
             
         }
