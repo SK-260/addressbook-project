@@ -30,7 +30,7 @@ pipeline{
         stage("Unit Testing"){
             steps {
                 sh "mvn test"
-                junit '/target/surefire-reports/*.xml'
+                junit 'target/surefire-reports/*.xml'
             }
         }
         stage("Code Coverage"){
