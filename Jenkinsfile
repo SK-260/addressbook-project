@@ -35,7 +35,7 @@ pipeline{
         }
         stage("Code Coverage"){
             steps{
-                withEnv(["JAVA_HOME=${tool 'JDK8'}"]) {
+                withEnv(["JAVA_HOME=${tool 'JDK 8'}"]) {
                     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
                     cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
                 }
