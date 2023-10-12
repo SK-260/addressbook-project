@@ -71,5 +71,17 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage("Upload to Nexus Repository"){
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'addressbook', classifier: '', file: 'target/addressbook.war', type: 'war']], 
+                credentialsId: 'nexuslogin', 
+                groupId: 'QA', 
+                nexusUrl: '192.168.1.9:8081/', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'addressbook', 
+                version: '$BUILD_ID_$BUILD_TIMESTAMP'
+            }
+        }
     }
 }
