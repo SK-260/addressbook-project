@@ -43,8 +43,14 @@ pipeline{
         }
         stage("Sonar Analysis") {
             steps{
+                def scannerHome = tool 'sonarscanner';
                 withSonarQubeEnv(credentialsId: 'sonartoken', installationName: 'sonarserver'){
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                    sh ''' ${scannerHome}/bin/sonar-scanner" -Dsonar.projectKey=addressbook \
+                     -Dsonar.projectName=addressbook \
+                     -Dsonar.projectVersion=1.0 \
+                     -Dsonar.java.pmd.reportPaths=target/ \
+                     '''
+
                 }
             }
         }
