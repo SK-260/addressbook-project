@@ -80,7 +80,7 @@ pipeline{
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'addressbook', 
-                version: '$BUILD_ID_$BUILD_TIMESTAMP'
+                version: '${BUILD_ID}_${BUILD_TIMESTAMP}'
             }
         }
     }
