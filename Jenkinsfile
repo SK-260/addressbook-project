@@ -28,7 +28,7 @@ pipeline{
         }
         stage("Code Coverage"){
             steps{
-                sh "mvn cobertura:cobertura"
+                sh "mvn checkstyle:checkstyle"
             }
         }
     }
