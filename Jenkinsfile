@@ -53,8 +53,8 @@ pipeline{
                     -Dsonar.source=src/ \
                     -Dsonar.java.binaries=target/classes/,target/test-classes/ \
                     -Dsonar.java.pmd.reportPaths=target/ \
-                    -Dsonar.flex.cobertura.reportPaths=target/site/cobertura \
-                    -Dsonar.junit.reportPaths=target/surefire-reports
+                    -Dsonar.flex.cobertura.reportPaths=target/site/cobertura/ \
+                    -Dsonar.junit.reportPaths=target/surefire-reports/
                     '''
                 }
             }
