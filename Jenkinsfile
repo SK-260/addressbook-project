@@ -54,6 +54,7 @@ pipeline{
                     -Dsonar.source=src/ \
                     -Dsonar.java.binaries=target/classes/,target/test-classes/ \
                     -Dsonar.java.pmd.reportPaths=target/ \
+                    -Dsonar.coverage.ReportPaths=target/site/cobertura
                     '''
                 }
             }
