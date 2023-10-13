@@ -109,7 +109,7 @@ pipeline{
     }
     post{
         always{
-            slackSend channel: '#deployment', 
+            slackSend channel: '#addressbook-deployment', 
             message: '${env.currentBuild.currentResult} Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at ${env.BUILD_URL}'
         }
     }
