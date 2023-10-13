@@ -23,21 +23,21 @@ pipeline{
         stage("Code Review") {
             steps {
                 sh ' mvn pmd:pmd'
-                recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
+                // recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
             }
             
         }
         stage("Unit Testing"){
             steps {
                 sh "mvn test"
-                junit 'target/surefire-reports/*.xml'
+                // junit 'target/surefire-reports/*.xml'
             }
         }
         stage("Code Coverage"){
             steps{
                 withEnv(["JAVA_HOME=${tool 'JDK 8'}"]) {
                     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
-                    cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
+                    // cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
                 }                
             }
         }
@@ -105,6 +105,12 @@ pipeline{
                     sh 'aws ecs update-service --cluster address --service address-service --force-new-deployment'
                 }
             }
+        }
+    }
+    post{
+        always{
+            slackSend channel: '#deployment', 
+            message: '${env.currentBuild.currentResult} Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at ${env.BUILD_URL}'
         }
     }
 }
