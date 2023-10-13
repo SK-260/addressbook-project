@@ -93,7 +93,7 @@ pipeline{
         stage("Publish Docker Image"){
             steps{
                 script{
-                    docker.withRegistry("https://559002051652.dkr.ecr.ap-south-1.amazonaws.com/addressbook",addresscreds){
+                    docker.withRegistry("https://559002051652.dkr.ecr.ap-south-1.amazonaws.com/addressbook","ecr:ap-south-1:addresscreds"){
                         dockerImage.push("latest")
                         dockerImage.push(${BUILD_NUMBER})
                     }
