@@ -7,7 +7,8 @@ This is a sample Java Maven Project which acts as an addressbook. Used this code
 - **Jenkins:** For continuous integration
 - **SonarQube:** For Code Analysis 
 - **SonaType Nexus Repo:** For storing the build artifacts
-- **Ansible:** Configuration management tools
+- **Docker:** To Build Docker images
 - **AWS Elastic Container Registry:** Remote repository to store docker images
 - **AWS Elastic Container Service:** To Deploy the App in a cluster
+- **Slack:** For notifications
 
