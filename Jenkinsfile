@@ -86,7 +86,7 @@ pipeline{
         stage("Build Docker image "){
             steps {
                 script{
-                    dockerImage = docker.build("addressbook","")
+                    dockerImage = docker.build("addressbook",".")
                 }
 
             }
