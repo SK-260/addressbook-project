@@ -88,7 +88,16 @@ pipeline{
                 script{
                     dockerImage = docker.build("addressbook",".")
                 }
-
+            }
+        }
+        stage("Publish Docker Image"){
+            steps{
+                script{
+                    docker.withRegistry("https://559002051652.dkr.ecr.ap-south-1.amazonaws.com/addressbook","addresscreds"){
+                        dockerImage.push("latest")
+                        dockerImage.push(${BUILD_NUMBER})
+                    }
+                }
             }
         }
     }
