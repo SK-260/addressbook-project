@@ -99,5 +99,12 @@ pipeline{
                 }
             }
         }
+        stage("Deploy to ECS Staging"){
+            steps{
+                withAWS(credentials: 'addresscreds', region: 'ap-south-1') {
+                    sh 'aws ecs update-service --cluster address --service address-service --force-new-deployment'
+                }
+            }
+        }
     }
 }
