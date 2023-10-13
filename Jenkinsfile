@@ -83,5 +83,10 @@ pipeline{
                 version: '${BUILD_ID}_${BUILD_TIMESTAMP}'
             }
         }
+        // stage("Build Docker image "){
+        //     steps {
+
+        //     }
+        // }
     }
 }
