@@ -83,10 +83,13 @@ pipeline{
                 version: '${BUILD_ID}_${BUILD_TIMESTAMP}'
             }
         }
-        // stage("Build Docker image "){
-        //     steps {
+        stage("Build Docker image "){
+            steps {
+                script{
+                    dockerImage = docker.build("addressbook","")
+                }
 
-        //     }
-        // }
+            }
+        }
     }
 }
