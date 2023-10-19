@@ -11,4 +11,5 @@ This is a sample Java Maven Project which acts as an addressbook. Used this code
 - **AWS Elastic Container Registry:** Remote repository to store docker images
 - **AWS Elastic Container Service:** To Deploy the App in a cluster
 - **Slack:** For notifications
-
+- **Prometheus:** For Monitoring
+- **Grafana:** For Visualisation
